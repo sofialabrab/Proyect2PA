@@ -73,16 +73,19 @@ public class Lluvia {
 		    	  Gota gt = gotas.get(i);
 		    	  gt.activarSonido();
 		    	  //la gota choca con el tarro
-			    		boolean estado = gt.actualizarMovimiento();
-			    		if(estado == false) 	
-		    			{	gt.destruirSonido();
-			    			return false;
-		    			}
+		 
+		    	  	tarro.elegirPremio();
+		    		boolean estado = gt.actualizarMovimiento();
 		    		
-			    		// gota dañina
-			    		//llamar a actualizar gota mala
-			    	  rainDropsPos.removeIndex(i);
-			          gotas.removeIndex(i);
+		    		if(estado == false) 	
+	    			{	gt.destruirSonido();
+		    			return false;
+	    			}
+	    		
+		    		// gota dañina
+		    		//llamar a actualizar gota mala
+		    	  rainDropsPos.removeIndex(i);
+		          gotas.removeIndex(i);
 			      }
 			   } 
 			  return true; 

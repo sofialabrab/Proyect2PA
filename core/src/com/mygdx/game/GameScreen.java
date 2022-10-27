@@ -73,18 +73,18 @@ public class GameScreen implements Screen {
 			// caida de la lluvia 
 	        boolean estado = lluvia.actualizarMovimiento(tarro);
 	       if (estado == false) {
-	    	   System.out.println("Entro a falso");
+	    	   
 	    	  //actualizar HigherScore
 	    	  if (game.getHigherScore() < tarro.getPuntos())
 	    	  {
 	    		  game.setHigherScore(tarro.getPuntos());  
-	    		  System.out.println("Actualiza highscore" + game.getHigherScore()) ;
+	    		  
 	    		 
 	    	  }
 	    		 
 	    	  //ir a la ventana de finde juego y destruir la actual
 	    	  game.setScreen(new GameOverScreen(game));
-	    	  System.out.println("Antes dispose");
+	    	  
 	    	  dispose();
 	       }
 		}

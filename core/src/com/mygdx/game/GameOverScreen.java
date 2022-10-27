@@ -32,7 +32,7 @@ public class GameOverScreen implements Screen {
 
 		batch.begin();
 		font.draw(batch, " PERDISTE:(", 100, 200);
-		font.draw(batch, "Buena suerte para la proxima", 100, 150);
+		font.draw(batch, "Buena suerte para la proxima Belieber", 100, 150);
 		font.draw(batch, "Toca en cualquier lado para reiniciar.", 100, 100);
 		batch.end();
 
