@@ -51,6 +51,7 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
+		tarro = Tarro.createTarro();
 		//limpia la pantalla con color azul obscuro.
 		ScreenUtils.clear(0, 0, 0.2f, 1);
 		//actualizar matrices de la cámara
@@ -67,12 +68,20 @@ public class GameScreen implements Screen {
 			// movimiento del tarro desde teclado
 	        tarro.actualizarMovimiento();        
 			// caida de la lluvia 
-	       if (!lluvia.actualizarMovimiento(tarro)) {
+	        boolean estado = lluvia.actualizarMovimiento(tarro);
+	       if (estado == false) {
+	    	   System.out.println("Entro a falso");
 	    	  //actualizar HigherScore
-	    	  if (game.getHigherScore()<tarro.getPuntos())
+	    	  if (game.getHigherScore() < tarro.getPuntos())
+	    	  {
 	    		  game.setHigherScore(tarro.getPuntos());  
+	    		  System.out.println("Actualiza highscore" + game.getHigherScore()) ;
+	    		 
+	    	  }
+	    		 
 	    	  //ir a la ventana de finde juego y destruir la actual
 	    	  game.setScreen(new GameOverScreen(game));
+	    	  System.out.println("Antes dispose");
 	    	  dispose();
 	       }
 		}

@@ -74,12 +74,19 @@ public class Lluvia {
 		      }
 		      if(raindrop.overlaps(tarro.getArea())) { 
 		    	  Gota gt = gotas.get(i);
+		    	  gt.activarSonido();
 		    	  //la gota choca con el tarro
-			    		gt.actualizarMovimiento();
+			    		boolean estado = gt.actualizarMovimiento();
+			    		if(estado == false) 	
+		    			{	gt.destruirSonido();
+			    			return false;
+		    			}
+		    		
 			    		// gota dañina
 			    		//llamar a actualizar gota mala
 			    	  rainDropsPos.removeIndex(i);
 			          gotas.removeIndex(i);
+			          
 			      	
 			      }
 			   } 
@@ -91,13 +98,10 @@ public class Lluvia {
 			  Rectangle raindrop = rainDropsPos.get(i);
 			  Gota gt = gotas.get(i);
 				  gt.actualizarDibujoGota(raindrop, batch);
-				  // gota dañina
-			
-				 
+				  // gota dañina	 
 		   }
 	   }
    public void destruir() {
-      dropSound.dispose();
       rainMusic.dispose();
    }
    public void pausar() {
