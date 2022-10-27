@@ -12,15 +12,14 @@ import com.badlogic.gdx.utils.TimeUtils;
 
 public class Lluvia {
     private long lastDropTime;
-    private Texture gotaBuena;
-    private Texture gotaMala;
-    private Sound dropSound;
+//    private Texture gotaBuena;
+//    private Texture gotaMala;
+//    private Sound dropSound;
     private Music rainMusic;
 	private Array<Rectangle> rainDropsPos;
 	private Array<Gota> gotas = new Array<Gota>();
 	public Lluvia(Music mm) {
 		rainMusic = mm;
-		
 	}
 	
 	public void crear() {
@@ -51,8 +50,6 @@ public class Lluvia {
 	      {
 	    	  gota = new GotaBuena();
 	    	  //gota.crearGota();
-	    	 
-	    	  
 	      }
 	     gotas.add(gota);
 	
@@ -86,8 +83,6 @@ public class Lluvia {
 			    		//llamar a actualizar gota mala
 			    	  rainDropsPos.removeIndex(i);
 			          gotas.removeIndex(i);
-			          
-			      	
 			      }
 			   } 
 			  return true; 

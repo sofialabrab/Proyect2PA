@@ -120,7 +120,8 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void dispose() {
-      tarro.destruir();
+	
+	  Tarro.createTarro().destruir();
       lluvia.destruir();
 
 	}

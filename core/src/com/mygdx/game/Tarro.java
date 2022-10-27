@@ -95,6 +95,7 @@ public class Tarro {
 	    
 
 	public void destruir() {
+			refTarro = null;
 		    bucketImage.dispose();
 	   }
 	
