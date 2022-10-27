@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -53,7 +54,9 @@ public class GameScreen implements Screen {
 	public void render(float delta) {
 		tarro = Tarro.createTarro();
 		//limpia la pantalla con color azul obscuro.
-		ScreenUtils.clear(0, 0, 0.2f, 1);
+		//ScreenUtils.clear(0, 0, 0.2f, 1);
+		Gdx.gl.glClearColor( 167/255f , 217/255f , 219/255f, 1 );
+		Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT );
 		//actualizar matrices de la cámara
 		camera.update();
 		//actualizar 

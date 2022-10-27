@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -12,7 +13,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 		public void create() {
 			batch = new SpriteBatch();
-			font = new BitmapFont(); // use libGDX's default Arial font
+			font = new BitmapFont();
+			font.setColor(64/255f, 64/255f, 64/255f, 1);
+			// use libGDX's default Arial font
 			this.setScreen(new MainMenuScreen(this));
 		}
 
