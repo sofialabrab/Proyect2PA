@@ -35,6 +35,21 @@ public class Tarro {
 		   }
 		   return refTarro;
 	   }
+	   public int getVelx()
+	   {
+		   return velx;
+	   }
+	   
+	   public void setVidas(int i) {
+
+	        vidas = vidas + i;
+	    }
+
+	    public void setVelx(int i) {
+
+	        velx = velx + i;
+	    }
+	    
 	
 	   
 		public int getVidas() {
@@ -95,11 +110,42 @@ public class Tarro {
 	    
 
 	public void destruir() {
+			refTarro = null;
 		    bucketImage.dispose();
 	   }
 	
    public boolean estaHerido() {
 	   return herido;
    }
-	   
+	Ruleta pp = new Premios();
+	Ruleta cc = new Castigo();
+	
+	public void elegirPremio()
+	{
+		
+		
+		if(getPuntos() % 100 == 0 && getPuntos() != 0)
+	    {
+			
+			if (getPuntos() % 300 == 0)
+			{
+				//Premio
+				pp.modVida();
+			}
+
+
+	    	if(getPuntos() == 300) 
+	    	{
+	    		//Castigo
+	    		cc.modVida();
+	    		
+	    		//Premio 
+	    		pp.modVelocidad();
+	    	}
+	    		
+	    	//Castigo
+	    	if(getPuntos() == 400)cc.modVelocidad();
+
+	    }
+	}   
 }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -35,7 +36,7 @@ public class GameScreen implements Screen {
          //gota.crearGota();
 	      // load the drop sound effect and the rain background "music" 
          
-	     Music rainMusic = Gdx.audio.newMusic(Gdx.files.internal("justinbaby.mp3"));
+	     Music rainMusic = Gdx.audio.newMusic(Gdx.files.internal("OLLG.mp3"));
          lluvia = new Lluvia(rainMusic);
 	      
 	      // camera
@@ -51,8 +52,11 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
+		tarro = Tarro.createTarro();
 		//limpia la pantalla con color azul obscuro.
-		ScreenUtils.clear(0, 0, 0.2f, 1);
+		//ScreenUtils.clear(0, 0, 0.2f, 1);
+		Gdx.gl.glClearColor( 167/255f , 217/255f , 219/255f, 1 );
+		Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT );
 		//actualizar matrices de la cámara
 		camera.update();
 		//actualizar 
@@ -67,12 +71,20 @@ public class GameScreen implements Screen {
 			// movimiento del tarro desde teclado
 	        tarro.actualizarMovimiento();        
 			// caida de la lluvia 
-	       if (!lluvia.actualizarMovimiento(tarro)) {
+	        boolean estado = lluvia.actualizarMovimiento(tarro);
+	       if (estado == false) {
+	    	   
 	    	  //actualizar HigherScore
-	    	  if (game.getHigherScore()<tarro.getPuntos())
+	    	  if (game.getHigherScore() < tarro.getPuntos())
+	    	  {
 	    		  game.setHigherScore(tarro.getPuntos());  
+	    		  
+	    		 
+	    	  }
+	    		 
 	    	  //ir a la ventana de finde juego y destruir la actual
 	    	  game.setScreen(new GameOverScreen(game));
+	    	  
 	    	  dispose();
 	       }
 		}
@@ -111,7 +123,8 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void dispose() {
-      tarro.destruir();
+	
+	  Tarro.createTarro().destruir();
       lluvia.destruir();
 
 	}

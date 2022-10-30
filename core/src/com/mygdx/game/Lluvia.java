@@ -12,15 +12,14 @@ import com.badlogic.gdx.utils.TimeUtils;
 
 public class Lluvia {
     private long lastDropTime;
-    private Texture gotaBuena;
-    private Texture gotaMala;
-    private Sound dropSound;
+//    private Texture gotaBuena;
+//    private Texture gotaMala;
+//    private Sound dropSound;
     private Music rainMusic;
 	private Array<Rectangle> rainDropsPos;
 	private Array<Gota> gotas = new Array<Gota>();
 	public Lluvia(Music mm) {
 		rainMusic = mm;
-		
 	}
 	
 	public void crear() {
@@ -37,8 +36,8 @@ public class Lluvia {
 	      Rectangle raindrop = new Rectangle();
 	      raindrop.x = MathUtils.random(0, 800-64);
 	      raindrop.y = 480;
-	      raindrop.width = 64;
-	      raindrop.height = 64;
+	      raindrop.width = 50;
+	      raindrop.height = 68;
 	      rainDropsPos.add(raindrop);
 	      // ver el tipo de gota
 	      if (MathUtils.random(1,10) < 5)
@@ -51,8 +50,6 @@ public class Lluvia {
 	      {
 	    	  gota = new GotaBuena();
 	    	  //gota.crearGota();
-	    	 
-	    	  
 	      }
 	     gotas.add(gota);
 	
@@ -74,13 +71,21 @@ public class Lluvia {
 		      }
 		      if(raindrop.overlaps(tarro.getArea())) { 
 		    	  Gota gt = gotas.get(i);
+		    	  gt.activarSonido();
 		    	  //la gota choca con el tarro
-			    		gt.actualizarMovimiento();
-			    		// gota dañina
-			    		//llamar a actualizar gota mala
-			    	  rainDropsPos.removeIndex(i);
-			          gotas.removeIndex(i);
-			      	
+		 
+		    	  	tarro.elegirPremio();
+		    		boolean estado = gt.actualizarMovimiento();
+		    		
+		    		if(estado == false) 	
+	    			{	gt.destruirSonido();
+		    			return false;
+	    			}
+	    		
+		    		// gota dañina
+		    		//llamar a actualizar gota mala
+		    	  rainDropsPos.removeIndex(i);
+		          gotas.removeIndex(i);
 			      }
 			   } 
 			  return true; 
@@ -91,13 +96,10 @@ public class Lluvia {
 			  Rectangle raindrop = rainDropsPos.get(i);
 			  Gota gt = gotas.get(i);
 				  gt.actualizarDibujoGota(raindrop, batch);
-				  // gota dañina
-			
-				 
+				  // gota dañina	 
 		   }
 	   }
    public void destruir() {
-      dropSound.dispose();
       rainMusic.dispose();
    }
    public void pausar() {

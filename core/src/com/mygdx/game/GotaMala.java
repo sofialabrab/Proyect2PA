@@ -14,8 +14,10 @@ public class GotaMala extends Gota{
 	 Sound hurtSound ;
 
 	public GotaMala() {
-		  gotaMala = new Texture(Gdx.files.internal("dropBad.png"));
-		  hurtSound = Gdx.audio.newSound(Gdx.files.internal("hurt.ogg"));
+		
+		  super(Gdx.audio.newSound(Gdx.files.internal("hurt.ogg")));
+		  gotaMala = new Texture(Gdx.files.internal("SelenaSi.jpg"));
+		  //hurtSound = Gdx.audio.newSound(Gdx.files.internal("hurt.ogg"));
 	      
 	} 
 		// TODO Auto-generated method stub
@@ -23,11 +25,15 @@ public class GotaMala extends Gota{
 	public boolean actualizarMovimiento() {
 	
 		Tarro.createTarro().dañar();
-		hurtSound.play();
+		//hurtSound.play();
   	  	if (Tarro.createTarro().getVidas()<=0)
-  	  		return false; // si se queda sin vidas retorna falso /game over
+  	  	{	System.out.println("Se quedo sin vidas:" + Tarro.createTarro().getVidas() );
+  	  		return false;
+  	  	}
+  	  		 
+  	  	else return true;// si se queda sin vidas retorna falso /game over
   	  	
-        return true;
+        
 	}
 
 	@Override

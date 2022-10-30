@@ -8,9 +8,20 @@ import com.badlogic.gdx.utils.Array;
 
 public abstract class  Gota {
 	
+	Sound sonid;
 	
+	public Gota(Sound sonid)
+	{
+		this.sonid = sonid;
+	}
 	//public abstract void crearGota();
-	
+	public void activarSonido()
+	{
+		sonid.play();
+	}
+	public void destruirSonido() {
+		sonid.dispose();
+	}
 	public abstract boolean actualizarMovimiento();
 	
 	public abstract void actualizarDibujoGota(Rectangle raindrop, SpriteBatch batch);
