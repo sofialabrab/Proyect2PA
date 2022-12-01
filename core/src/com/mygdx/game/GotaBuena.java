@@ -12,6 +12,8 @@ public class GotaBuena extends Gota {
 
 	Texture gotaBuena;
 	public Sound dropSound;
+	Tarro tarro = Tarro.createTarro();
+
 	
 	
 	
@@ -26,7 +28,7 @@ public class GotaBuena extends Gota {
 	}
 	@Override
 	public boolean actualizarMovimiento() {
-		Tarro.createTarro().sumarPuntos(10);
+		tarro.sumarPuntos(10);
         //dropSound.play();
         return true;
    } 

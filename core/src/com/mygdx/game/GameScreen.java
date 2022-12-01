@@ -16,24 +16,37 @@ public class GameScreen implements Screen {
     private OrthographicCamera camera;
 	private SpriteBatch batch;	   
 	private BitmapFont font;
-	private Tarro tarro;
+	private Tarro tarro = Tarro.createTarro();
 	private Lluvia lluvia;
 	private Sound droupSound;
 	private Gota gota;
+	
+	//private StrategyImplementada strategy;
 
 	   
 	//boolean activo = true;
+	
+	//tarro = Tarro.createTarro();
 
 	public GameScreen(final GameLluviaMenu game) {
 		this.game = game;
         this.batch = game.getBatch();
         this.font = game.getFont();
-		  // load the images for the droplet and the bucket, 64x64 pixels each 	    
-         tarro = Tarro.createTarro();
+		  // load the images for the droplet and the bucket, 64x64 pixels each 	  
+        
+       
+        //Crea las gotas
+       // strategy.crear();
+       
+        
+        
+        //tarro = Tarro.createTarro();
          gota = new GotaBuena();
-         //gota.crearGota();
+         
          gota = new GotaMala();
-         //gota.crearGota();
+         
+        
+        
 	      // load the drop sound effect and the rain background "music" 
          
 	     Music rainMusic = Gdx.audio.newMusic(Gdx.files.internal("OLLG.mp3"));
@@ -52,7 +65,7 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
-		tarro = Tarro.createTarro();
+		//tarro = Tarro.createTarro();
 		//limpia la pantalla con color azul obscuro.
 		//ScreenUtils.clear(0, 0, 0.2f, 1);
 		Gdx.gl.glClearColor( 167/255f , 217/255f , 219/255f, 1 );
@@ -124,7 +137,8 @@ public class GameScreen implements Screen {
 	@Override
 	public void dispose() {
 	
-	  Tarro.createTarro().destruir();
+	 // Tarro.createTarro().destruir();
+	  tarro.destruir();
       lluvia.destruir();
 
 	}

@@ -12,6 +12,8 @@ public class GotaMala extends Gota{
 
 	 Texture gotaMala;
 	 Sound hurtSound ;
+	 Tarro tarro = Tarro.createTarro();
+
 
 	public GotaMala() {
 		
@@ -26,8 +28,8 @@ public class GotaMala extends Gota{
 	
 		Tarro.createTarro().dañar();
 		//hurtSound.play();
-  	  	if (Tarro.createTarro().getVidas()<=0)
-  	  	{	System.out.println("Se quedo sin vidas:" + Tarro.createTarro().getVidas() );
+  	  	if (tarro.getVidas()<=0)
+  	  	{	
   	  		return false;
   	  	}
   	  		 
