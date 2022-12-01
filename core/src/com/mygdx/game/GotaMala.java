@@ -16,12 +16,12 @@ public class GotaMala extends Gota{
 	public GotaMala() {
 		
 		  super(Gdx.audio.newSound(Gdx.files.internal("hurt.ogg")));
-		  gotaMala = new Texture(Gdx.files.internal("selena.png"));
+		  gotaMala = new Texture(Gdx.files.internal("SelenaSi.jpg"));
 		  //hurtSound = Gdx.audio.newSound(Gdx.files.internal("hurt.ogg"));
 	      
 	} 
 		// TODO Auto-generated method stub
-		
+	@Override
 	public boolean actualizarMovimiento() {
 	
 		Tarro.createTarro().dañar();

@@ -122,10 +122,18 @@ public class Tarro {
 	
 	public void elegirPremio()
 	{
-		if(getPuntos() % 100 == 0)
+		
+		
+		if(getPuntos() % 100 == 0 && getPuntos() != 0)
 	    {
-			//Premio
-	    	pp.modVida();
+			
+			if (getPuntos() % 300 == 0)
+			{
+				//Premio
+				pp.modVida();
+			}
+
+
 	    	if(getPuntos() == 300) 
 	    	{
 	    		//Castigo

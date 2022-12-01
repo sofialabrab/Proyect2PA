@@ -24,7 +24,7 @@ public class GotaBuena extends Gota {
 		// TODO Auto-generated method stub
 		
 	}
-	
+	@Override
 	public boolean actualizarMovimiento() {
 		Tarro.createTarro().sumarPuntos(10);
         //dropSound.play();
@@ -32,7 +32,7 @@ public class GotaBuena extends Gota {
    } 
 // TODO Auto-generated method stub
 		
-
+	@Override
 	public void actualizarDibujoGota(Rectangle raindrop, SpriteBatch batch) {
 			 batch.draw(gotaBuena, raindrop.x, raindrop.y); 
 		// TODO Auto-generated method stub

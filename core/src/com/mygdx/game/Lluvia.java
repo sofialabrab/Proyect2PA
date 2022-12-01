@@ -36,8 +36,8 @@ public class Lluvia {
 	      Rectangle raindrop = new Rectangle();
 	      raindrop.x = MathUtils.random(0, 800-64);
 	      raindrop.y = 480;
-	      raindrop.width = 64;
-	      raindrop.height = 64;
+	      raindrop.width = 50;
+	      raindrop.height = 68;
 	      rainDropsPos.add(raindrop);
 	      // ver el tipo de gota
 	      if (MathUtils.random(1,10) < 5)

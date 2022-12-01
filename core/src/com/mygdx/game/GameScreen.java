@@ -36,7 +36,7 @@ public class GameScreen implements Screen {
          //gota.crearGota();
 	      // load the drop sound effect and the rain background "music" 
          
-	     Music rainMusic = Gdx.audio.newMusic(Gdx.files.internal("justinbaby.mp3"));
+	     Music rainMusic = Gdx.audio.newMusic(Gdx.files.internal("OLLG.mp3"));
          lluvia = new Lluvia(rainMusic);
 	      
 	      // camera
