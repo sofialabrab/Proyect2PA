@@ -26,6 +26,12 @@ public abstract class  Gota {
 	
 	public abstract void actualizarDibujoGota(Rectangle raindrop, SpriteBatch batch);
 	
+	public void templateGotas(Rectangle raindrop, SpriteBatch batch)
+	{
+		actualizarMovimiento();
+		actualizarDibujoGota(raindrop, batch);
+	}
+	
 	
 	
 }
